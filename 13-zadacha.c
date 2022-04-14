@@ -113,16 +113,28 @@ void add_element_index(int mass[], int index, int num){
 int main(int ac, char **av){
     int j=0;
     int count=1;
-    int *massiv = (int *)malloc(ac-1);
-    for(int i=1; av[i]; i++){
-        massiv[j++] = atoi(av[i]);
-    }
+    // for(int i=1; av[i]; i++){
+    //     massiv[j++] = atoi(av[i]);
+    // }
+    printf("Write number of arguments\n");
+    scanf("%d", &j);
+    int *massiv = (int *)malloc(j);
+
+    printf("Write arguments\n");
+    vvod(massiv, j);
+
     zamena(massiv);
+
+    printf("Lets move 2nd element to 100\n");
     add_element_index(massiv, 2, 100);
-    // delete_element_index(massiv, 3);
+
+    printf("Lets delete 1st element\n");
+    delete_element_index(massiv, 1);
+
     for (int i=0; massiv[i]; i++)
-    if (massiv[i] != -1)
+    // if (massiv[i] != -1)
         printf("%d ", massiv[i]);
-    // write_to_file(massiv, "1.txt");
+        
+    write_to_file(massiv, "1.txt");
     return printf("\n");
 }
