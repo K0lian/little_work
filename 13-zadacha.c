@@ -63,8 +63,8 @@ void zamena(int massiv[]){
             massiv[j-i-1] = tmp;
         }
     }
-    if (massiv[j] == -1)
-        massiv[j] = 0;
+    if (massiv[j-1] == -1)
+        massiv[j-1] = 0;
 }
 
 void open_file(int mass[], char name[]){
@@ -113,9 +113,7 @@ void add_element_index(int mass[], int index, int num){
 int main(int ac, char **av){
     int j=0;
     int count=1;
-    // for(int i=1; av[i]; i++){
-    //     massiv[j++] = atoi(av[i]);
-    // }
+
     printf("Write number of arguments\n");
     scanf("%d", &j);
     int *massiv = (int *)malloc(j);
@@ -134,7 +132,7 @@ int main(int ac, char **av){
     for (int i=0; massiv[i]; i++)
     // if (massiv[i] != -1)
         printf("%d ", massiv[i]);
-        
+
     write_to_file(massiv, "1.txt");
     return printf("\n");
 }
