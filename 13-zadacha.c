@@ -47,25 +47,40 @@ int search_min(int mass[]){
     return s;
 }
 
-void zamena(int massiv[]){
+void zamena(int massiv[], int num){
     int j=0;
-    while(massiv[j])
-        j++;
-    int count=1;
-    if (massiv[j-1] %2 == 0){
-        count = 0;
-        j--;
-    }
-    for (int i=j/2; massiv[i]; i++){
-        if (massiv[i] % 2 == 1){
-            int tmp=massiv[i];
-            massiv[i] = massiv[j-i-1];
-            massiv[j-i-1] = tmp;
+    // while(massiv[j])
+    //     j++;
+    // j--;
+    if (num%2 == 1)
+        num++;
+    for (int i=0; i < num/2; i++){
+        if (i%2==0){
+            int tmp = massiv[i];
+            massiv[i] = massiv[num-i-2];
+            massiv[num-i-2] = tmp;
         }
     }
-    if (massiv[j-1] == -1)
-        massiv[j-1] = 0;
 }
+// void zamena(int massiv[]){
+//     int j=0;
+//     while(massiv[j])
+//         j++;
+//     int count=1;
+//     if (massiv[j-1] %2 == 0){
+//         count = 0;
+//         j--;
+//     }
+//     for (int i=j/2; massiv[i]; i++){
+//         if (massiv[i] % 2 == 1){
+//             int tmp=massiv[i];
+//             massiv[i] = massiv[j-i-1];
+//             massiv[j-i-1] = tmp;
+//         }
+//     }
+//     if (massiv[j-1] == -1)
+//         massiv[j-1] = 0;
+// }
 
 void open_file(int mass[], char name[]){
     FILE *fp;
@@ -114,25 +129,28 @@ int main(int ac, char **av){
     int j=0;
     int count=1;
 
-    printf("Write number of arguments\n");
-    scanf("%d", &j);
-    int *massiv = (int *)malloc(j);
+    int massiv[1000];
+    if (ac == 1){
+        printf("Write number of arguments\n");
+        scanf("%d", &j);
+        printf("Write arguments\n");
+        vvod(massiv, j);
+    }
+    else
+        for(int i=1; av[i]; i++){
+            massiv[j++] = atoi(av[i]);
+    }
 
-    printf("Write arguments\n");
-    vvod(massiv, j);
+    zamena(massiv, j);
 
-    zamena(massiv);
+    // printf("Lets move 2nd element to 100\n");
+    // add_element_index(massiv, 2, 100);
 
-    printf("Lets move 2nd element to 100\n");
-    add_element_index(massiv, 2, 100);
+    // printf("Lets delete 1st element\n");
+    // delete_element_index(massiv, 1);
 
-    printf("Lets delete 1st element\n");
-    delete_element_index(massiv, 1);
+    vivod(massiv, j);
 
-    for (int i=0; massiv[i]; i++)
-    // if (massiv[i] != -1)
-        printf("%d ", massiv[i]);
-
-    write_to_file(massiv, "1.txt");
-    return printf("\n");
+    // write_to_file(massiv, "1.txt");
+    // return printf("\n");
 }
