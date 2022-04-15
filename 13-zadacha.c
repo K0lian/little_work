@@ -49,9 +49,6 @@ int search_min(int mass[]){
 
 void zamena(int massiv[], int num){
     int j=0;
-    // while(massiv[j])
-    //     j++;
-    // j--;
     if (num%2 == 1)
         num++;
     for (int i=0; i < num/2; i++){
@@ -62,25 +59,6 @@ void zamena(int massiv[], int num){
         }
     }
 }
-// void zamena(int massiv[]){
-//     int j=0;
-//     while(massiv[j])
-//         j++;
-//     int count=1;
-//     if (massiv[j-1] %2 == 0){
-//         count = 0;
-//         j--;
-//     }
-//     for (int i=j/2; massiv[i]; i++){
-//         if (massiv[i] % 2 == 1){
-//             int tmp=massiv[i];
-//             massiv[i] = massiv[j-i-1];
-//             massiv[j-i-1] = tmp;
-//         }
-//     }
-//     if (massiv[j-1] == -1)
-//         massiv[j-1] = 0;
-// }
 
 void open_file(int mass[], char name[]){
     FILE *fp;
@@ -152,5 +130,6 @@ int main(int ac, char **av){
     vivod(massiv, j);
 
     // write_to_file(massiv, "1.txt");
-    // return printf("\n");
+
+    return 0;
 }
